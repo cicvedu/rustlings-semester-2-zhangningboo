@@ -7,7 +7,7 @@
 
 
 fn main() {
-    let cat = ("Furry McFurson", 3.5);
+    let cat = ("Furry McFurson", 3.5); // 一个元素的元组： (sth, )
     let (name, age) = cat;
 
     println!("{} is {} years old.", name, age);

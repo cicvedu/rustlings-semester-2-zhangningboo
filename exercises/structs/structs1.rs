@@ -15,7 +15,9 @@ struct ColorClassicStruct {
 
 struct ColorTupleStruct(u8, u8, u8);
 
-#[derive(Debug)]
+// tuple 类型定义的struct，可以当做函数被调用
+
+#[derive(Debug)]  // 派生式过程宏；让编译器为下面的struct自动增加一些trait
 struct UnitLikeStruct;
 
 #[cfg(test)]

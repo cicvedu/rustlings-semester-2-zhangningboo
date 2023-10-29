@@ -9,7 +9,7 @@
 
 
 fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
-    for element in v.iter_mut() {
+    for element in v.iter_mut() {  // element的类型是&mut，是一个可变的引用
         // TODO: Fill this up so that each element in the Vec `v` is
         // multiplied by 2.
         *element = *element * 2;
@@ -19,12 +19,14 @@ fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
     v
 }
 
-fn vec_map(v: &Vec<i32>) -> Vec<i32> {
-    v.iter().map(|element| {
+fn vec_map(v: &Vec<i32>) -> Vec<i32> {  // 传入引用，传出的非引用，传出的在堆上
+    v.iter()
+    .map(|element| {  // map 把每一个元素进行一次变换操作，filter，reduce
         // TODO: Do the same thing as above - but instead of mutating the
         // Vec, you can just return the new number!
         element * 2
-    }).collect()
+    })
+    .collect() // 把计算结果合并起来放到一个新位置上去，堆上
 }
 
 #[cfg(test)]

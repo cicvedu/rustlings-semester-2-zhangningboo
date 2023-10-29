@@ -8,7 +8,7 @@
 
 
 fn main() {
-    let a = vec![0; 10];
+    let a = vec![0; 10];  // 在栈上；初始化操作很占用时间，(编译时会替换成循环初始化?)
 
     if a.len() >= 100 {
         println!("Wow, that's a big array!");

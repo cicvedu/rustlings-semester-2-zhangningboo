@@ -16,7 +16,8 @@ struct Package {
 }
 
 impl Package {
-    fn new(sender_country: String, recipient_country: String, weight_in_grams: i32) -> Package {
+    // 约定的构造函数名字为 new
+    fn new(sender_country: String, recipient_country: String, weight_in_grams: i32) -> Self {
         if weight_in_grams <= 0 {
             panic!("Can not ship a weightless package.")
         } else {
@@ -26,6 +27,18 @@ impl Package {
                 weight_in_grams,
             }
         }
+    }
+
+    fn fn1(self) {
+
+    }
+
+    fn fn2(&self) {
+        
+    }
+
+    fn fn3(&mut self) {
+        
     }
 
     fn is_international(&self) -> bool {
@@ -59,7 +72,7 @@ mod tests {
 
         let package = Package::new(sender_country, recipient_country, 1200);
 
-        assert!(package.is_international());
+        assert!(package.is_international());  // 隐含有&调用
     }
 
     #[test]

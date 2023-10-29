@@ -17,7 +17,19 @@ struct Order {
     count: u32,
 }
 
+#[derive(Default)]
+struct DefaultOrder {
+    name: String,
+    year: u32,
+    made_by_phone: bool,
+    made_by_mobile: bool,
+    made_by_email: bool,
+    item_number: u32,
+    count: u32,
+}
+
 fn create_order_template() -> Order {
+    // Rust 要求struct中每个字段都必须有默认值
     Order {
         name: String::from("Bob"),
         year: 2019,
@@ -37,9 +49,21 @@ mod tests {
     fn your_order() {
         let order_template = create_order_template();
         // TODO: Create your own order using the update syntax and template above!
-        let mut your_order = create_order_template();
-        your_order.name = "Hacker in Rust".to_string();
-        your_order.count = 1;
+        // let mut your_order = create_order_template();
+        // your_order.name = "Hacker in Rust".to_string();
+        // your_order.count = 1;
+
+        let your_order = Order {
+            name: "Hacker in Rust".to_string(),
+            count: 1,
+            ..create_order_template()
+        };
+
+        let default_order = DefaultOrder {
+            name: "Hacker in Rust".to_string(),
+            count: 1,
+            ..DefaultOrder::default()
+        };
 
         assert_eq!(your_order.name, "Hacker in Rust");
         assert_eq!(your_order.year, order_template.year);
