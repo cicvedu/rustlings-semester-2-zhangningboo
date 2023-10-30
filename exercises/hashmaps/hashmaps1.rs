@@ -18,7 +18,8 @@ fn fruit_basket() -> HashMap<String, u32> {
     let mut basket =  HashMap::new();// TODO: declare your hash map here.
 
     // Two bananas are already given for you :)
-    basket.insert(String::from("banana"), 2);
+    // basket.insert(String::from("banana"), 2 as u64);
+    basket.insert(String::from("banana"), 2);  // 第一次使用时，会自动推导HashMap的存储内容的类型；也根据返回类型进行推断
 
     // TODO: Put more fruits in your basket here.
     basket.insert(String::from("apple"), 2);

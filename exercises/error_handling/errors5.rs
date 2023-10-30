@@ -27,7 +27,7 @@
 use std::error;
 use std::fmt;
 use std::num::ParseIntError;
-
+// 动态派发：
 // TODO: update the return type of `main()` to make this compile.
 fn main() -> Result<(), Box<dyn error::Error>> {
     let pretend_user_input = "42";
