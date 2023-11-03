@@ -3,9 +3,8 @@
 // Execute `rustlings hint threads3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
-use std::sync::mpsc;
+use std::sync::mpsc;  // Multi-producer, single-consumer； 管道/队列；
 use std::sync::Arc;
 use std::thread;
 use std::time::Duration;
@@ -31,10 +30,11 @@ fn send_tx(q: Queue, tx: mpsc::Sender<u32>) -> () {
     let qc1 = Arc::clone(&qc);
     let qc2 = Arc::clone(&qc);
 
+    let t1 = tx.clone();  // 所有权 
     thread::spawn(move || {
         for val in &qc1.first_half {
             println!("sending {:?}", val);
-            tx.send(*val).unwrap();
+            t1.send(*val).unwrap();
             thread::sleep(Duration::from_secs(1));
         }
     });

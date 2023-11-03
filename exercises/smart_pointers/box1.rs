@@ -21,7 +21,7 @@
 
 #[derive(PartialEq, Debug)]
 pub enum List {
-    Cons(i32, Box<List>),
+    Cons(i32, Box<List>),  // 循环递归引用
     Nil,
 }
 

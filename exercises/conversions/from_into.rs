@@ -40,10 +40,39 @@ impl Default for Person {
 // If while parsing the age, something goes wrong, then return the default of
 // Person Otherwise, then return an instantiated Person object with the results
 
-// I AM NOT DONE
 
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
+        // 如果提供的字符串长度为 0，返回默认的 Person 实例
+        if s.is_empty() {
+            return Person::default();
+        }
+
+        // 将字符串按逗号分割，得到一个字符串片段的 Vec
+        let arr: Vec<&str> = s.split(",").collect();
+        if arr.len() != 2 {
+            return Person::default();
+        }
+
+        // 从 Vec 中获取第一个元素作为姓名，使用 unwrap_or_default 处理不存在的情况
+        let mut name = arr.get(0).unwrap().to_string();
+        if name.len() == 0 {
+            return Person::default();
+        }
+        let mut age = 30;
+        // 将第二个元素解析为 usize 类型的年龄，如果解析失败，返回默认年龄 30
+        let age_str = arr.get(1).unwrap().to_string();
+        match age_str.parse::<usize>() {
+            Ok(a) => {
+                age = a;
+            },
+            Err(_) => {
+                name = String::from("John")
+            }
+        }
+
+        // 创建并返回 Person 实例
+        Person { name, age }
     }
 }
 
